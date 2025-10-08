@@ -17,13 +17,6 @@ import ErrorPage from './pages/ErrorPage'
 
 function App() {
 
-  /* Use state per il ritorno del valore booleano */
-  const [budgetMode, setBudgetMode] = useState(false)
-
-  /* Funzione per il cambio valore */
-    const toggleBudgetMode = () => {
-    setBudgetMode((prev) => !prev);
-  };
 
   return (
     <>
@@ -31,12 +24,12 @@ function App() {
       <Routes>
 
         <Route element={<DefaultLayout/>}>    {/* pagina di dedault contenente un outlet con il main intercambiabile */}     
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home toggleBudgetMode={toggleBudgetMode}/>} />
           <Route path="/ChiSiamo" element={<ChiSiamo toggleBudgetMode={toggleBudgetMode}/>} /> {/* 3 pagine che sono all'interno di default che si intercambiano al click all'interno del main */}
 
           <Route path="/Products"> {/* una rotta che contiene altre 2 rotte */}
-              <Route path="" element= {<Products/>}/>{/* pagina base dei prodotti */}
-              <Route path=':id' element= {<PageProduct/>}/> {/* grazie al id  si andrà ad aprina una pagina dove lo si utilizzerà per richiamare quel determinato elemento di un eventuale api tramite UseParams*/}
+              <Route path="" element= {<Products toggleBudgetMode={toggleBudgetMode}/>}/>{/* pagina base dei prodotti */}
+              <Route path=':id' element= {<PageProduct toggleBudgetMode={toggleBudgetMode}/>}/> {/* grazie al id  si andrà ad aprina una pagina dove lo si utilizzerà per richiamare quel determinato elemento di un eventuale api tramite UseParams*/}
           </Route>
           <Route path="*" element={<ErrorPage/>} />   {/* Page in caso di errore */}  
         </Route>
