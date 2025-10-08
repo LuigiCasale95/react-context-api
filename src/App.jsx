@@ -1,4 +1,5 @@
 import './App.css'
+import { useState, useEffect, createContext , useContext } from 'react'
 
 import { BrowserRouter, Routes , Route } from 'react-router-dom'
 
@@ -16,6 +17,14 @@ import ErrorPage from './pages/ErrorPage'
 
 function App() {
 
+  /* Use state per il ritorno del valore booleano */
+  const [budgetMode, setBudgetMode] = useState(false)
+
+  /* Funzione per il cambio valore */
+    const toggleBudgetMode = () => {
+    setBudgetMode((prev) => !prev);
+  };
+
   return (
     <>
     <BrowserRouter> {/* le rotte delle pagine */}
@@ -23,7 +32,7 @@ function App() {
 
         <Route element={<DefaultLayout/>}>    {/* pagina di dedault contenente un outlet con il main intercambiabile */}     
           <Route path="/" element={<Home/>} />
-          <Route path="/ChiSiamo" element={<ChiSiamo/>} /> {/* 3 pagine che sono all'interno di default che si intercambiano al click all'interno del main */}
+          <Route path="/ChiSiamo" element={<ChiSiamo toggleBudgetMode={toggleBudgetMode}/>} /> {/* 3 pagine che sono all'interno di default che si intercambiano al click all'interno del main */}
 
           <Route path="/Products"> {/* una rotta che contiene altre 2 rotte */}
               <Route path="" element= {<Products/>}/>{/* pagina base dei prodotti */}
