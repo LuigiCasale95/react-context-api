@@ -5,6 +5,9 @@ import './App.css'
  */
 import { BrowserRouter, Routes , Route } from 'react-router-dom'
 
+/* import del provider */ 
+import { BudgetProvider } from './Context/BudgetContext'
+
 /* Import componenti */
 import Navbar from './components/Navbar'
 /* Layout */
@@ -22,7 +25,7 @@ function App() {
 
   return (
     <>
-      {/* <BudgetProvider> */}
+      <BudgetProvider>
         <BrowserRouter> {/* le rotte delle pagine */}
           <Routes>
 
@@ -39,7 +42,7 @@ function App() {
 
           </Routes>
         </BrowserRouter>
-      {/* </BudgetProvider>  */} 
+      </BudgetProvider>  
     </>
   )
 }

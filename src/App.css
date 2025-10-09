@@ -54,3 +54,12 @@ body {
 .navBarMod ul li a:hover {
   font-size: 40px;
 }
+.buttonBudget {
+  background-color: #AFE7F8;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 10px 10px 5px #1e3835;
+}
+.navBarMod ul li button.active {
+  font-size: 40px;
+}
