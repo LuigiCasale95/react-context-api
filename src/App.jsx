@@ -1,6 +1,8 @@
 import './App.css'
-import { useState, useEffect, createContext , useContext } from 'react'
-
+/* import { useState, useEffect, createContext , useContext } from 'react'
+ */
+/* import { BudgetProvider } from '.context/BudgetProvider'
+ */
 import { BrowserRouter, Routes , Route } from 'react-router-dom'
 
 /* Import componenti */
@@ -20,22 +22,24 @@ function App() {
 
   return (
     <>
-    <BrowserRouter> {/* le rotte delle pagine */}
-      <Routes>
+      {/* <BudgetProvider> */}
+        <BrowserRouter> {/* le rotte delle pagine */}
+          <Routes>
 
-        <Route element={<DefaultLayout/>}>    {/* pagina di dedault contenente un outlet con il main intercambiabile */}     
-          <Route path="/" element={<Home toggleBudgetMode={toggleBudgetMode}/>} />
-          <Route path="/ChiSiamo" element={<ChiSiamo toggleBudgetMode={toggleBudgetMode}/>} /> {/* 3 pagine che sono all'interno di default che si intercambiano al click all'interno del main */}
+            <Route element={<DefaultLayout/>}>    {/* pagina di dedault contenente un outlet con il main intercambiabile */}     
+              <Route path="/" element={<Home/>} />
+              <Route path="/ChiSiamo" element={<ChiSiamo/>} /> {/* 3 pagine che sono all'interno di default che si intercambiano al click all'interno del main */}
 
-          <Route path="/Products"> {/* una rotta che contiene altre 2 rotte */}
-              <Route path="" element= {<Products toggleBudgetMode={toggleBudgetMode}/>}/>{/* pagina base dei prodotti */}
-              <Route path=':id' element= {<PageProduct toggleBudgetMode={toggleBudgetMode}/>}/> {/* grazie al id  si andrà ad aprina una pagina dove lo si utilizzerà per richiamare quel determinato elemento di un eventuale api tramite UseParams*/}
-          </Route>
-          <Route path="*" element={<ErrorPage/>} />   {/* Page in caso di errore */}  
-        </Route>
+              <Route path="/Products"> {/* una rotta che contiene altre 2 rotte */}
+                  <Route path="" element= {<Products/>}/>{/* pagina base dei prodotti */}
+                  <Route path=':id' element= {<PageProduct/>}/> {/* grazie al id  si andrà ad aprina una pagina dove lo si utilizzerà per richiamare quel determinato elemento di un eventuale api tramite UseParams*/}
+              </Route>
+              <Route path="*" element={<ErrorPage/>} />   {/* Page in caso di errore */}  
+            </Route>
 
-      </Routes>
-    </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      {/* </BudgetProvider>  */} 
     </>
   )
 }

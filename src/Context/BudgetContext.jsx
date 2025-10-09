@@ -1,54 +1,20 @@
-import { createContext, useState, useEffect , useContext, Children } from "react"
+import { createContext, useState } from "react";
 
 const BudgetContext = createContext();
 
-/* componente di creazione provaider */
-const BudgetProvider = () => {
+const BudgetProvider = ({ children }) => {
+    /* Variabile di stato condivisa */
+    const [budgetMode, setBudgetMode] = useState(false);
 
-    return ( <BudgetContext.Provider
-        value={{
-            count,
-            setCount,
+    return (
+        <BudgetContext.Provider
+        value={{ budgetMode, setBudgetMode }}>
 
-        }}
-        >
-
-            {Children}
+        {children}
         </BudgetContext.Provider>
     )
+
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* const  BudgetContext = () => {
-    Use state per il ritorno del valore booleano
-    const [budgetMode, setBudgetMode] = useState(false)
-
-    Funzione per il cambio valore
-    const toggleBudgetMode = () => {
-    setBudgetMode((prev) => !prev);
-    };
-
-    
-    
-    return (
-        <p>BudgetProdget</p>
-    )
-}
-
-export default BudgetContext */
+export {BudgetProvider, BudgetContext}
